@@ -11,7 +11,7 @@ if ! command -v gh &> /dev/null; then
 fi
 
 # Steg 1: Fråga efter och navigera till rätt plats
-read -p "Ange sökväg för projektet: " -e -i "$HOME/Python" PROJECT_PATH
+read -r -p "Ange sökväg för projektet: " -e -i "$HOME/Python" PROJECT_PATH
 
 if [ ! -d "$PROJECT_PATH" ]; then
     echo "Fel: Mappen '$PROJECT_PATH' finns inte. Skapa den först."
@@ -22,7 +22,7 @@ echo "Navigerar till \"$PROJECT_PATH\"..."
 cd "$PROJECT_PATH"
 
 # Steg 2: Fråga efter projektnamn
-read -p "Vad ska projektet heta? " PROJEKTNAMN
+read -r -p "Vad ska projektet heta? " PROJEKTNAMN
 
 if [ -z "$PROJEKTNAMN" ]; then
     echo "Fel: Inget projektnamn angavs. Avbryter."
@@ -81,7 +81,7 @@ git commit -m "Initial commit: Skapa projektstruktur"
 # --- NYTT AUTOMATISKT STEG ---
 # Steg 11: Skapa GitHub repo och ladda upp koden
 echo ""
-read -p "Vill du skapa ett GitHub repository för '$PROJEKTNAMN'? (j/n) " CREATE_REPO
+read -r -p "Vill du skapa ett GitHub repository för '$PROJEKTNAMN'? (j/n) " CREATE_REPO
 if [[ "$CREATE_REPO" =~ ^[Jj]$ ]]; then
     
     read -p "Ska repot vara 'public' eller 'private'? " REPO_VISIBILITY
@@ -93,7 +93,7 @@ if [[ "$CREATE_REPO" =~ ^[Jj]$ ]]; then
 
     echo "Skapar ett $REPO_VISIBILITY repository på GitHub..."
     # Detta kommando gör allt: skapar repo, lägger till remote och pushar
-    gh repo create "$PROJEKTNAMN" --$REPO_VISIBILITY --source=. --push
+    gh repo create "$PROJEKTNAMN" --"$REPO_VISIBILITY" --source=. --push
     
     echo ""
     echo "-----------------------------------------------------"
