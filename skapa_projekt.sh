@@ -115,3 +115,5 @@ echo "   source venv/bin/activate"
 echo ""
 echo "2. Börja koda!"
 echo ""
+
+# Ändring ifrån branchen funktion-test  
