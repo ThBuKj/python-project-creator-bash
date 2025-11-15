@@ -46,12 +46,12 @@ git init -b main
 # Steg 5: Skapa mappstruktur och tomma filer
 echo "Skapar mappstruktur och filer..."
 mkdir src
-touch README.md .gitignore requirements.txt main.py src/__init__.py
+touch README.md .gitignore requirements.txt main.py src/__init__.py tests/test_kod.py
 
 # Steg 6: Fyll .gitignore
 echo "Skapar .gitignore..."
 {
-    echo "venv/"
+    echo ".venv/"
     echo "__pycache__/"
     echo ".vscode/"
     echo ".idea/"
